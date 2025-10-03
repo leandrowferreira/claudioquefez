@@ -20,11 +20,11 @@ Aplicação web para cadastro de participantes do PHPeste 2025 em Parnaíba, Pia
 ## Tarefas de Implementação
 
 ### 1. Configuração Inicial
-- [ ] Configurar banco de dados SQLite no `.env`
-- [ ] Configurar Mailpit para envio de e-mail no `.env`
-- [ ] Remover todas as migrations padrão do Laravel
-- [ ] Limpar rotas padrão do Laravel (`routes/web.php`)
-- [ ] Remover controllers/views padrão do Laravel
+- [x] Configurar banco de dados SQLite no `.env`
+- [x] Configurar Mailpit para envio de e-mail no `.env`
+- [x] Remover todas as migrations padrão do Laravel
+- [x] Limpar rotas padrão do Laravel (`routes/web.php`)
+- [x] Remover controllers/views padrão do Laravel
 
 ### 2. Banco de Dados - Migrations
 - [ ] Criar migration para tabela `participants` com colunas: `id`, `name`, `email`, `state`, `codigo`, `created_at`, `updated_at`
