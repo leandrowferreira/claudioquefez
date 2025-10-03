@@ -27,12 +27,12 @@ Aplicação web para cadastro de participantes do PHPeste 2025 em Parnaíba, Pia
 - [x] Remover controllers/views padrão do Laravel
 
 ### 2. Banco de Dados - Migrations
-- [ ] Criar migration para tabela `participants` com colunas: `id`, `name`, `email`, `state`, `codigo`, `created_at`, `updated_at`
-- [ ] Adicionar unique constraint para `email` e `codigo` na tabela `participants`
-- [ ] Criar migration para tabela `draws` com colunas: `id`, `participant_id`, `created_at`, `updated_at`
-- [ ] Adicionar foreign key `participant_id` referenciando `participants.id` na tabela `draws`
-- [ ] Adicionar unique constraint para `participant_id` na tabela `draws` (participante não pode ser sorteado mais de uma vez)
-- [ ] Executar migrations
+- [x] Criar migration para tabela `participants` com colunas: `id`, `name`, `email`, `state`, `codigo`, `created_at`, `updated_at`
+- [x] Adicionar unique constraint para `email` e `codigo` na tabela `participants`
+- [x] Criar migration para tabela `draws` com colunas: `id`, `participant_id`, `created_at`, `updated_at`
+- [x] Adicionar foreign key `participant_id` referenciando `participants.id` na tabela `draws`
+- [x] Adicionar unique constraint para `participant_id` na tabela `draws` (participante não pode ser sorteado mais de uma vez)
+- [x] Executar migrations
 
 ### 3. Models
 - [ ] Criar model `Participant` com fillable fields: `name`, `email`, `state`, `codigo`
