@@ -106,7 +106,7 @@ Aplicação web para cadastro de participantes do PHPeste 2025 em Parnaíba, Pia
   - Código em destaque (grande, centralizado)
 
 ### 11. Views - Sistema de Sorteio
-- [ ] Criar view `resources/views/draws/index.blade.blade.php` com:
+- [x] Criar view `resources/views/draws/index.blade.blade.php` com:
   - Lista de participantes já sorteados (se houver)
   - Botão grande "Sortear"
   - Se houver sorteio realizado na sessão:
@@ -115,7 +115,7 @@ Aplicação web para cadastro de participantes do PHPeste 2025 em Parnaíba, Pia
     - Botão "Sortear novamente"
   - Se não houver mais participantes disponíveis:
     - Exibir mensagem "Não há mais participantes disponíveis para sorteio"
-- [ ] Implementar exibição do código ao clicar em "Exibir código" (pode ser via JavaScript toggle ou requisição POST)
+- [x] Implementar exibição do código ao clicar em "Exibir código" (pode ser via JavaScript toggle ou requisição POST)
 
 ### 12. Rotas
 - [ ] Criar rota GET `/` apontando para `ParticipantController@index` (formulário)
