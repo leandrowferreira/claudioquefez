@@ -59,18 +59,18 @@ Aplicação web para cadastro de participantes do PHPeste 2025 em Parnaíba, Pia
 - [x] Criar método `success` para exibir página de agradecimento com código
 
 ### 6. Controller - DrawController
-- [ ] Criar `DrawController` com método `index`:
+- [x] Criar `DrawController` com método `index`:
   - Buscar todos os sorteios já realizados (com dados do participante)
   - Exibir lista de sorteados
   - Exibir botão "Sortear"
-- [ ] Implementar método `draw`:
+- [x] Implementar método `draw`:
   - Buscar participantes que ainda não foram sorteados
   - Verificar se há participantes disponíveis
   - Se não houver, retornar mensagem "não há mais participantes disponíveis"
   - Sortear participante aleatoriamente
   - Salvar sorteio na tabela `draws`
   - Retornar dados do participante sorteado (nome, e-mail, estado)
-- [ ] Implementar método `showCode`:
+- [x] Implementar método `showCode`:
   - Receber ID do sorteio
   - Retornar código do participante sorteado em destaque
 
