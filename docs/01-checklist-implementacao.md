@@ -35,10 +35,10 @@ Aplicação web para cadastro de participantes do PHPeste 2025 em Parnaíba, Pia
 - [x] Executar migrations
 
 ### 3. Models
-- [ ] Criar model `Participant` com fillable fields: `name`, `email`, `state`, `codigo`
-- [ ] Adicionar relacionamento `hasOne(Draw::class)` no model `Participant`
-- [ ] Criar model `Draw` com fillable field: `participant_id`
-- [ ] Adicionar relacionamento `belongsTo(Participant::class)` no model `Draw`
+- [x] Criar model `Participant` com fillable fields: `name`, `email`, `state`, `codigo`
+- [x] Adicionar relacionamento `hasOne(Draw::class)` no model `Participant`
+- [x] Criar model `Draw` com fillable field: `participant_id`
+- [x] Adicionar relacionamento `belongsTo(Participant::class)` no model `Draw`
 
 ### 4. Form Request - Validação
 - [ ] Criar FormRequest `StoreParticipantRequest` com validação para:
