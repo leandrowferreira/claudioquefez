@@ -75,13 +75,13 @@ Aplicação web para cadastro de participantes do PHPeste 2025 em Parnaíba, Pia
   - Retornar código do participante sorteado em destaque
 
 ### 7. Notificação - E-mail
-- [ ] Criar Notification `ParticipantRegistered` usando `php artisan make:notification`
-- [ ] Implementar método `via` retornando `['mail']`
-- [ ] Implementar método `toMail` com:
+- [x] Criar Notification `ParticipantRegistered` usando `php artisan make:notification`
+- [x] Implementar método `via` retornando `['mail']`
+- [x] Implementar método `toMail` com:
   - Assunto do e-mail
   - Texto explicativo sobre o cadastro
   - Código em destaque (usar markdown ou HTML)
-- [ ] Integrar envio da notificação no método `store` do `ParticipantController`
+- [x] Integrar envio da notificação no método `store` do `ParticipantController`
 
 ### 8. Views - Layout Base
 - [ ] Criar layout base Blade (`resources/views/layouts/app.blade.php`) com:
