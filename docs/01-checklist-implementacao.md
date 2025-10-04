@@ -155,7 +155,7 @@ Aplicação web para cadastro de participantes do PHPeste 2025 em Parnaíba, Pia
 - [x] Garantir que todos os testes passam com sucesso
 
 ### 17. Documentação
-- [ ] Criar/Atualizar README.md com:
+- [x] Criar/Atualizar README.md com:
   - Descrição do projeto (PHPeste 2025)
   - Requisitos do sistema (PHP 8.4, Composer, Docker/Sail)
   - Instruções de instalação (`composer install`, `./vendor/bin/sail up`)

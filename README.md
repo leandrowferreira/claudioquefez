@@ -1,61 +1,213 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# PHPeste 2025 - Sistema de Cadastro e Sorteio
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Sistema web para cadastro de participantes e sorteio de brindes do evento PHPeste 2025 em Parnaíba, Piauí.
 
-## About Laravel
+Este projeto foi desenvolvido como demonstração de uma aplicação Laravel implementada com a ajuda do Claude Code.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 📋 Sobre o Projeto
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Aplicação web que permite:
+- Cadastro de participantes com nome, e-mail e estado de origem
+- Geração automática de códigos únicos para cada participante
+- Envio de e-mail de confirmação com o código
+- Sistema de sorteio de participantes
+- Controle para evitar sorteio duplicado do mesmo participante
+- Exibição de histórico de sorteados
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## 🚀 Stack Tecnológica
 
-## Learning Laravel
+- **Backend**: PHP 8.4 com Laravel 12
+- **Banco de Dados**: SQLite
+- **Frontend**: Blade Templates + Bootstrap 5
+- **Ambiente**: Laravel Sail (Docker)
+- **Testes**: Pest (SQLite em memória)
+- **E-mail**: Notificações nativas do Laravel + Mailpit
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## 📦 Requisitos do Sistema
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+- Docker e Docker Compose
+- Git
+- Portas disponíveis: 80 (app), 1025 (SMTP), 8025 (Mailpit)
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## 🔧 Instalação
 
-## Laravel Sponsors
+### 1. Clone o repositório
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+```bash
+git clone https://github.com/leandrowferreira/claudioquefez.git
+cd claudioquefez
+```
 
-### Premium Partners
+### 2. Copie o arquivo de ambiente
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+```bash
+cp .env.example .env
+```
 
-## Contributing
+### 3. Inicie os containers com Sail
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+```bash
+./vendor/bin/sail up -d
+```
 
-## Code of Conduct
+### 4. Instale as dependências
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```bash
+./vendor/bin/sail composer install
+```
 
-## Security Vulnerabilities
+### 5. Gere a chave da aplicação
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+```bash
+./vendor/bin/sail artisan key:generate
+```
 
-## License
+### 6. Crie o banco de dados SQLite
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+```bash
+touch database/database.sqlite
+```
+
+### 7. Execute as migrations
+
+```bash
+./vendor/bin/sail artisan migrate
+```
+
+## 🎯 Uso da Aplicação
+
+### Acessar a Aplicação
+
+- **Site**: http://localhost
+- **Mailpit** (visualizar e-mails): http://localhost:8025
+
+### Funcionalidades
+
+#### Cadastro de Participantes
+1. Acesse http://localhost
+2. Preencha o formulário com nome, e-mail e estado
+3. Após o cadastro, um código único de 5 letras será gerado
+4. Um e-mail de confirmação será enviado (veja no Mailpit)
+
+#### Sistema de Sorteio
+1. Acesse http://localhost/sorteio
+2. Clique no botão "Sortear Participante"
+3. O sistema sorteará aleatoriamente um participante ainda não sorteado
+4. Clique em "Exibir Código" para ver o código do sorteado
+5. Use "Sortear Novamente" para realizar novo sorteio
+
+## 🧪 Executar Testes
+
+Execute a suite de testes com Pest:
+
+```bash
+./vendor/bin/sail artisan test
+```
+
+Ou usando o Pest diretamente:
+
+```bash
+./vendor/bin/sail pest
+```
+
+### Cobertura de Testes
+
+- ✅ 9 testes de cadastro de participantes
+- ✅ 7 testes de sistema de sorteio
+- ✅ 18 testes no total com 45 assertions
+
+## 📁 Estrutura do Projeto
+
+```
+├── app/
+│   ├── Http/
+│   │   ├── Controllers/
+│   │   │   ├── ParticipantController.php  # Cadastro de participantes
+│   │   │   └── DrawController.php          # Sistema de sorteio
+│   │   └── Requests/
+│   │       └── StoreParticipantRequest.php # Validação do formulário
+│   ├── Models/
+│   │   ├── Participant.php                 # Model de participante
+│   │   └── Draw.php                        # Model de sorteio
+│   └── Notifications/
+│       └── ParticipantRegistered.php       # E-mail de confirmação
+├── database/
+│   └── migrations/                         # Migrations do banco
+├── resources/
+│   └── views/
+│       ├── layouts/
+│       │   └── app.blade.php               # Layout base
+│       ├── participants/                   # Views de participantes
+│       └── draws/                          # Views de sorteio
+├── routes/
+│   └── web.php                             # Rotas da aplicação
+└── tests/
+    └── Feature/
+        ├── ParticipantTest.php             # Testes de participantes
+        └── DrawTest.php                    # Testes de sorteio
+```
+
+## 🗄️ Banco de Dados
+
+### Tabela: participants
+- `id`: ID auto-incremento
+- `name`: Nome do participante
+- `email`: E-mail (único)
+- `state`: Estado de origem (sigla)
+- `codigo`: Código único de 5 letras (único)
+- `created_at`, `updated_at`: Timestamps
+
+### Tabela: draws
+- `id`: ID auto-incremento
+- `participant_id`: FK para participants (único)
+- `created_at`, `updated_at`: Timestamps
+
+## 📧 Configuração de E-mail
+
+O projeto usa Mailpit para capturar e visualizar e-mails em desenvolvimento:
+
+- **SMTP**: localhost:1025
+- **Interface Web**: http://localhost:8025
+
+Todos os e-mails enviados pela aplicação podem ser visualizados no Mailpit.
+
+## 🛠️ Comandos Úteis
+
+```bash
+# Iniciar containers
+./vendor/bin/sail up -d
+
+# Parar containers
+./vendor/bin/sail down
+
+# Ver logs
+./vendor/bin/sail logs -f
+
+# Acessar bash do container
+./vendor/bin/sail bash
+
+# Executar Artisan
+./vendor/bin/sail artisan [comando]
+
+# Executar migrations
+./vendor/bin/sail artisan migrate
+
+# Limpar e recriar banco
+./vendor/bin/sail artisan migrate:fresh
+```
+
+## 🤖 Desenvolvimento com IA
+
+Este projeto foi desenvolvido como demonstração das capacidades do Claude Code. O código-fonte e os prompts utilizados estão disponíveis neste repositório.
+
+## 📄 Licença
+
+Este projeto é open-source sob a licença MIT.
+
+## 👥 Autor
+
+Desenvolvido para demonstração no PHPeste 2025 - Parnaíba, Piauí.
+
+---
+
+**Código-fonte e prompts**: https://github.com/leandrowferreira/claudioquefez
