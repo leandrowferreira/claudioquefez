@@ -41,11 +41,11 @@ Aplicação web para cadastro de participantes do PHPeste 2025 em Parnaíba, Pia
 - [x] Adicionar relacionamento `belongsTo(Participant::class)` no model `Draw`
 
 ### 4. Form Request - Validação
-- [ ] Criar FormRequest `StoreParticipantRequest` com validação para:
+- [x] Criar FormRequest `StoreParticipantRequest` com validação para:
   - `name`: obrigatório
   - `email`: obrigatório, formato válido, único na tabela `participants`
   - `state`: obrigatório, deve estar na lista de estados brasileiros
-- [ ] Criar lista de estados brasileiros para validação (AC, AL, AP, AM, BA, CE, DF, ES, GO, MA, MT, MS, MG, PA, PB, PR, PE, PI, RJ, RN, RS, RO, RR, SC, SP, SE, TO)
+- [x] Criar lista de estados brasileiros para validação (AC, AL, AP, AM, BA, CE, DF, ES, GO, MA, MT, MS, MG, PA, PB, PR, PE, PI, RJ, RN, RS, RO, RR, SC, SP, SE, TO)
 
 ### 5. Controller - ParticipantController
 - [ ] Criar `ParticipantController` com método `index` (exibir formulário)
