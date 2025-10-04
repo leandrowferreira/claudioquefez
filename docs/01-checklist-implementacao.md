@@ -84,7 +84,7 @@ Aplicação web para cadastro de participantes do PHPeste 2025 em Parnaíba, Pia
 - [x] Integrar envio da notificação no método `store` do `ParticipantController`
 
 ### 8. Views - Layout Base
-- [ ] Criar layout base Blade (`resources/views/layouts/app.blade.php`) com:
+- [x] Criar layout base Blade (`resources/views/layouts/app.blade.php`) com:
   - Tag HTML5 básica
   - Bootstrap 5 CDN (CSS e JS)
   - Cabeçalho do site
