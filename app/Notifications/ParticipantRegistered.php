@@ -35,12 +35,12 @@ class ParticipantRegistered extends Notification
     public function toMail(object $notifiable): MailMessage
     {
         return (new MailMessage)
-            ->subject('Cadastro realizado - PHPeste 2025')
+            ->subject('Cadastro realizado - Sorteio PHP PE no PHPeste 2025')
             ->greeting('Olá, ' . $notifiable->name . '!')
-            ->line('Seu cadastro para o PHPeste 2025 foi realizado com sucesso!')
-            ->line('Guarde o código abaixo com cuidado. Ele será necessário para receber seu brinde no evento caso você seja sorteado.')
+            ->line('Seu cadastro para o sorteio promovido pela comunidade PHP PE durante o PHPeste 2025 foi realizado com sucesso!')
+            ->line('Guarde o código abaixo com cuidado. Ele será necessário para receber seu brinde caso você seja sorteado.')
             ->line('**Seu código: ' . $this->codigo . '**')
-            ->line('Obrigado por participar do PHPeste 2025!');
+            ->line('Obrigado por participar do sorteio da comunidade PHP PE!');
     }
 
     /**

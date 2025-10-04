@@ -5,13 +5,39 @@ namespace App\Http\Controllers;
 use App\Models\Draw;
 use App\Models\Participant;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class DrawController extends Controller
 {
+    public function showPasswordForm(): View
+    {
+        return view('draws.password');
+    }
+
+    public function verifyPassword(Request $request): RedirectResponse
+    {
+        $password = $request->input('password');
+        $correctPassword = config('app.draw_password');
+
+        if ($password === $correctPassword) {
+            session(['draw_authenticated' => true]);
+            return redirect()->route('draws.index');
+        }
+
+        return redirect()->route('participants.create');
+    }
+
     public function index(): View
     {
-        $draws = Draw::with('participant')->latest()->get();
+        $drawnParticipantId = session('drawn')?->id;
+
+        $draws = Draw::with('participant')
+            ->when($drawnParticipantId, function ($query) use ($drawnParticipantId) {
+                $query->where('participant_id', '!=', $drawnParticipantId);
+            })
+            ->latest()
+            ->get();
 
         return view('draws.index', compact('draws'));
     }

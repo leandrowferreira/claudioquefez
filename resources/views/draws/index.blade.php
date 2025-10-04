@@ -42,12 +42,9 @@
                         </form>
                     @endif
 
-                    <form action="{{ route('draws.draw') }}" method="POST" class="d-inline">
-                        @csrf
-                        <button type="submit" class="btn btn-primary btn-lg">
-                            🎲 Sortear Novamente
-                        </button>
-                    </form>
+                    <a href="{{ route('draws.index') }}" class="btn btn-secondary btn-lg">
+                        ← Voltar
+                    </a>
                 </div>
             </div>
         @else
