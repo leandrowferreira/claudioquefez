@@ -118,12 +118,12 @@ Aplicação web para cadastro de participantes do PHPeste 2025 em Parnaíba, Pia
 - [x] Implementar exibição do código ao clicar em "Exibir código" (pode ser via JavaScript toggle ou requisição POST)
 
 ### 12. Rotas
-- [ ] Criar rota GET `/` apontando para `ParticipantController@index` (formulário)
-- [ ] Criar rota POST `/` apontando para `ParticipantController@store` (processar cadastro)
-- [ ] Criar rota GET `/sucesso` apontando para `ParticipantController@success` (página de agradecimento)
-- [ ] Criar rota GET `/sorteio` apontando para `DrawController@index` (página de sorteio)
-- [ ] Criar rota POST `/sorteio/sortear` apontando para `DrawController@draw` (executar sorteio)
-- [ ] Criar rota POST `/sorteio/exibir-codigo` apontando para `DrawController@showCode` (exibir código)
+- [x] Criar rota GET `/` apontando para `ParticipantController@index` (formulário)
+- [x] Criar rota POST `/` apontando para `ParticipantController@store` (processar cadastro)
+- [x] Criar rota GET `/sucesso` apontando para `ParticipantController@success` (página de agradecimento)
+- [x] Criar rota GET `/sorteio` apontando para `DrawController@index` (página de sorteio)
+- [x] Criar rota POST `/sorteio/sortear` apontando para `DrawController@draw` (executar sorteio)
+- [x] Criar rota POST `/sorteio/exibir-codigo` apontando para `DrawController@showCode` (exibir código)
 
 ### 13. Configuração de Testes
 - [ ] Instalar Pest (se não estiver instalado): `composer require pestphp/pest --dev`
