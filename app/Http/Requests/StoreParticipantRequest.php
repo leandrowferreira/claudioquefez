@@ -30,6 +30,25 @@ class StoreParticipantRequest extends FormRequest
     }
 
     /**
+     * Get custom messages for validator errors.
+     *
+     * @return array<string, string>
+     */
+    public function messages(): array
+    {
+        return [
+            'name.required' => 'O campo nome é obrigatório.',
+            'name.string' => 'O campo nome deve ser um texto.',
+            'name.max' => 'O campo nome não pode ter mais de 255 caracteres.',
+            'email.required' => 'O campo e-mail é obrigatório.',
+            'email.email' => 'O e-mail deve ser um endereço válido.',
+            'email.unique' => 'Este e-mail já está cadastrado.',
+            'state.required' => 'O campo estado é obrigatório.',
+            'state.in' => 'O estado selecionado é inválido.',
+        ];
+    }
+
+    /**
      * Get Brazilian states list
      */
     private function getBrazilianStates(): array

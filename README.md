@@ -38,23 +38,25 @@ git clone https://github.com/leandrowferreira/claudioquefez.git
 cd claudioquefez
 ```
 
-### 2. Copie o arquivo de ambiente
-
-```bash
-cp .env.example .env
-```
-
-### 3. Inicie os containers com Sail
+### 2. Inicie os containers com Sail
 
 ```bash
 ./vendor/bin/sail up -d
 ```
 
-### 4. Instale as dependências
+### 3. Instale as dependências
 
 ```bash
 ./vendor/bin/sail composer install
 ```
+
+### 4. Copie o arquivo de ambiente
+
+```bash
+cp .env.example .env
+```
+
+**Importante**: O arquivo `.env.example` já contém as configurações necessárias para o projeto funcionar com SQLite e Mailpit. Certifique-se de copiar este arquivo para `.env` antes de prosseguir.
 
 ### 5. Gere a chave da aplicação
 
@@ -69,6 +71,8 @@ touch database/database.sqlite
 ```
 
 ### 7. Execute as migrations
+
+**Importante**: Este passo é obrigatório para criar as tabelas no banco de dados.
 
 ```bash
 ./vendor/bin/sail artisan migrate

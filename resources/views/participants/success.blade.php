@@ -32,12 +32,6 @@
                 <p class="text-muted">
                     Um e-mail de confirmação com o código foi enviado para <strong>{{ $participant->email }}</strong>
                 </p>
-
-                <div class="mt-4">
-                    <a href="{{ route('participants.index') }}" class="btn btn-outline-primary">
-                        Cadastrar outro participante
-                    </a>
-                </div>
             </div>
         </div>
     </div>
