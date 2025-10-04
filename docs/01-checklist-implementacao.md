@@ -92,7 +92,7 @@ Aplicação web para cadastro de participantes do PHPeste 2025 em Parnaíba, Pia
   - Rodapé com texto: "O código-fonte e os prompts que geraram este site estão disponíveis em https://github.com/leandrowferreira/claudioquefez"
 
 ### 9. Views - Formulário de Cadastro
-- [ ] Criar view `resources/views/participants/index.blade.php` com:
+- [x] Criar view `resources/views/participants/index.blade.php` com:
   - Formulário com método POST para `/`
   - Campo "Nome" (input text, obrigatório)
   - Campo "E-mail" (input email, obrigatório)
