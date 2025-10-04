@@ -10,7 +10,7 @@ Aplicação web que permite:
 - Cadastro de participantes com nome, e-mail e estado de origem
 - Geração automática de códigos únicos para cada participante
 - Envio de e-mail de confirmação com o código
-- Sistema de sorteio de participantes
+- Sistema de sorteio de participantes protegido por senha
 - Controle para evitar sorteio duplicado do mesmo participante
 - Exibição de histórico de sorteados
 
@@ -58,6 +58,8 @@ cp .env.example .env
 
 **Importante**: O arquivo `.env.example` já contém as configurações necessárias para o projeto funcionar com SQLite e Mailpit. Certifique-se de copiar este arquivo para `.env` antes de prosseguir.
 
+A senha padrão para acesso ao sistema de sorteio está definida em `DRAW_PASSWORD="123mudar :)"`.
+
 ### 5. Gere a chave da aplicação
 
 ```bash
@@ -95,10 +97,11 @@ touch database/database.sqlite
 
 #### Sistema de Sorteio
 1. Acesse http://localhost/sorteio
-2. Clique no botão "Sortear Participante"
-3. O sistema sorteará aleatoriamente um participante ainda não sorteado
-4. Clique em "Exibir Código" para ver o código do sorteado
-5. Use "Sortear Novamente" para realizar novo sorteio
+2. Informe a senha de administrador (padrão: `123mudar :)`)
+3. Clique no botão "Sortear Participante"
+4. O sistema sorteará aleatoriamente um participante ainda não sorteado
+5. Clique em "Exibir Código" para ver o código do sorteado
+6. A senha fica salva na sessão durante o uso
 
 ## 🧪 Executar Testes
 
@@ -117,8 +120,8 @@ Ou usando o Pest diretamente:
 ### Cobertura de Testes
 
 - ✅ 9 testes de cadastro de participantes
-- ✅ 7 testes de sistema de sorteio
-- ✅ 18 testes no total com 45 assertions
+- ✅ 11 testes de sistema de sorteio (incluindo autenticação)
+- ✅ 22 testes no total com 56 assertions
 
 ## 📁 Estrutura do Projeto
 
@@ -128,6 +131,8 @@ Ou usando o Pest diretamente:
 │   │   ├── Controllers/
 │   │   │   ├── ParticipantController.php  # Cadastro de participantes
 │   │   │   └── DrawController.php          # Sistema de sorteio
+│   │   ├── Middleware/
+│   │   │   └── CheckDrawPassword.php       # Autenticação do sorteio
 │   │   └── Requests/
 │   │       └── StoreParticipantRequest.php # Validação do formulário
 │   ├── Models/
@@ -143,6 +148,8 @@ Ou usando o Pest diretamente:
 │       │   └── app.blade.php               # Layout base
 │       ├── participants/                   # Views de participantes
 │       └── draws/                          # Views de sorteio
+│           ├── index.blade.php             # Tela de sorteio
+│           └── password.blade.php          # Formulário de senha
 ├── routes/
 │   └── web.php                             # Rotas da aplicação
 └── tests/
@@ -165,6 +172,18 @@ Ou usando o Pest diretamente:
 - `id`: ID auto-incremento
 - `participant_id`: FK para participants (único)
 - `created_at`, `updated_at`: Timestamps
+
+## 🔐 Segurança
+
+### Senha do Sistema de Sorteio
+
+O acesso ao sistema de sorteio é protegido por senha. Configure a variável de ambiente:
+
+```bash
+DRAW_PASSWORD="123mudar :)"
+```
+
+A senha é validada via middleware e mantida na sessão do usuário.
 
 ## 📧 Configuração de E-mail
 
