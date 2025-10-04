@@ -48,15 +48,15 @@ Aplicação web para cadastro de participantes do PHPeste 2025 em Parnaíba, Pia
 - [x] Criar lista de estados brasileiros para validação (AC, AL, AP, AM, BA, CE, DF, ES, GO, MA, MT, MS, MG, PA, PB, PR, PE, PI, RJ, RN, RS, RO, RR, SC, SP, SE, TO)
 
 ### 5. Controller - ParticipantController
-- [ ] Criar `ParticipantController` com método `index` (exibir formulário)
-- [ ] Implementar método `store`:
+- [x] Criar `ParticipantController` com método `index` (exibir formulário)
+- [x] Implementar método `store`:
   - Validar dados via `StoreParticipantRequest`
   - Gerar código único de 5 letras maiúsculas
   - Verificar se código já existe no banco (loop até gerar único)
   - Salvar participante
   - Enviar notificação por e-mail
   - Redirecionar para página de sucesso com código
-- [ ] Criar método `success` para exibir página de agradecimento com código
+- [x] Criar método `success` para exibir página de agradecimento com código
 
 ### 6. Controller - DrawController
 - [ ] Criar `DrawController` com método `index`:
