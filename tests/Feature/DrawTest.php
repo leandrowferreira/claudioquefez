@@ -3,7 +3,45 @@
 use App\Models\Draw;
 use App\Models\Participant;
 
-test('exibir página de sorteio', function () {
+test('redirecionar para tela de senha quando não autenticado', function () {
+    $response = $this->get('/sorteio');
+
+    $response->assertRedirect(route('draw.password'));
+});
+
+test('exibir formulário de senha', function () {
+    $response = $this->get('/sorteio/senha');
+
+    $response->assertStatus(200);
+    $response->assertSee('Acesso ao Sistema de Sorteio');
+    $response->assertSee('Senha');
+});
+
+test('autenticar com senha correta e redirecionar para sorteio', function () {
+    config(['app.draw_password' => 'senha123']);
+
+    $response = $this->post('/sorteio/senha', [
+        'password' => 'senha123',
+    ]);
+
+    $response->assertRedirect(route('draws.index'));
+    $response->assertSessionHas('draw_authenticated', true);
+});
+
+test('redirecionar para cadastro com senha incorreta', function () {
+    config(['app.draw_password' => 'senha123']);
+
+    $response = $this->post('/sorteio/senha', [
+        'password' => 'senha_errada',
+    ]);
+
+    $response->assertRedirect(route('participants.create'));
+    $response->assertSessionMissing('draw_authenticated');
+});
+
+test('exibir página de sorteio quando autenticado', function () {
+    $this->withSession(['draw_authenticated' => true]);
+
     $response = $this->get('/sorteio');
 
     $response->assertStatus(200);
@@ -11,6 +49,8 @@ test('exibir página de sorteio', function () {
 });
 
 test('sortear participante cadastrado e salvar em draws', function () {
+    $this->withSession(['draw_authenticated' => true]);
+
     $participant = Participant::create([
         'name' => 'Carlos Alberto',
         'email' => 'carlos@example.com',
@@ -29,6 +69,8 @@ test('sortear participante cadastrado e salvar em draws', function () {
 });
 
 test('participante sorteado não pode ser sorteado novamente', function () {
+    $this->withSession(['draw_authenticated' => true]);
+
     $participant = Participant::create([
         'name' => 'Fernanda Lima',
         'email' => 'fernanda@example.com',
@@ -51,6 +93,8 @@ test('participante sorteado não pode ser sorteado novamente', function () {
 });
 
 test('exibir lista de participantes já sorteados', function () {
+    $this->withSession(['draw_authenticated' => true]);
+
     $participant1 = Participant::create([
         'name' => 'Roberto Silva',
         'email' => 'roberto@example.com',
@@ -77,6 +121,8 @@ test('exibir lista de participantes já sorteados', function () {
 });
 
 test('exibir mensagem quando não há mais participantes disponíveis', function () {
+    $this->withSession(['draw_authenticated' => true]);
+
     $participant = Participant::create([
         'name' => 'Última Pessoa',
         'email' => 'ultima@example.com',
@@ -92,6 +138,8 @@ test('exibir mensagem quando não há mais participantes disponíveis', function
 });
 
 test('exibir código do participante sorteado', function () {
+    $this->withSession(['draw_authenticated' => true]);
+
     $participant = Participant::create([
         'name' => 'Marcelo Santos',
         'email' => 'marcelo@example.com',
@@ -108,6 +156,8 @@ test('exibir código do participante sorteado', function () {
 });
 
 test('permitir múltiplos sorteios', function () {
+    $this->withSession(['draw_authenticated' => true]);
+
     $participant1 = Participant::create([
         'name' => 'Primeiro',
         'email' => 'primeiro@example.com',
