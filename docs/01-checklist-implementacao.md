@@ -126,33 +126,33 @@ Aplicação web para cadastro de participantes do PHPeste 2025 em Parnaíba, Pia
 - [x] Criar rota POST `/sorteio/exibir-codigo` apontando para `DrawController@showCode` (exibir código)
 
 ### 13. Configuração de Testes
-- [ ] Instalar Pest (se não estiver instalado): `composer require pestphp/pest --dev`
-- [ ] Configurar `phpunit.xml` para usar SQLite em memória nos testes
-- [ ] Criar arquivo `tests/Pest.php` com configurações base (se necessário)
+- [x] Instalar Pest (se não estiver instalado): `composer require pestphp/pest --dev`
+- [x] Configurar `phpunit.xml` para usar SQLite em memória nos testes
+- [x] Criar arquivo `tests/Pest.php` com configurações base (se necessário)
 
 ### 14. Testes - Cadastro de Participantes
-- [ ] Criar teste: exibir formulário de cadastro (GET `/`)
-- [ ] Criar teste: cadastro com dados válidos salva no banco e redireciona para sucesso
-- [ ] Criar teste: gerar código único de 5 letras maiúsculas
-- [ ] Criar teste: não permitir e-mail duplicado
-- [ ] Criar teste: validar campo nome obrigatório
-- [ ] Criar teste: validar campo e-mail obrigatório e formato válido
-- [ ] Criar teste: validar campo estado obrigatório e deve ser estado brasileiro válido
-- [ ] Criar teste: código gerado deve ser único (mesmo se houver colisão, gerar novo)
-- [ ] Criar teste: enviar notificação por e-mail após cadastro
+- [x] Criar teste: exibir formulário de cadastro (GET `/`)
+- [x] Criar teste: cadastro com dados válidos salva no banco e redireciona para sucesso
+- [x] Criar teste: gerar código único de 5 letras maiúsculas
+- [x] Criar teste: não permitir e-mail duplicado
+- [x] Criar teste: validar campo nome obrigatório
+- [x] Criar teste: validar campo e-mail obrigatório e formato válido
+- [x] Criar teste: validar campo estado obrigatório e deve ser estado brasileiro válido
+- [x] Criar teste: código gerado deve ser único (mesmo se houver colisão, gerar novo)
+- [x] Criar teste: enviar notificação por e-mail após cadastro
 
 ### 15. Testes - Sistema de Sorteio
-- [ ] Criar teste: exibir página de sorteio (GET `/sorteio`)
-- [ ] Criar teste: sortear participante cadastrado e salvar em `draws`
-- [ ] Criar teste: participante sorteado não pode ser sorteado novamente
-- [ ] Criar teste: exibir lista de participantes já sorteados
-- [ ] Criar teste: exibir mensagem quando não há mais participantes disponíveis
-- [ ] Criar teste: exibir código do participante sorteado
-- [ ] Criar teste: permitir múltiplos sorteios
+- [x] Criar teste: exibir página de sorteio (GET `/sorteio`)
+- [x] Criar teste: sortear participante cadastrado e salvar em `draws`
+- [x] Criar teste: participante sorteado não pode ser sorteado novamente
+- [x] Criar teste: exibir lista de participantes já sorteados
+- [x] Criar teste: exibir mensagem quando não há mais participantes disponíveis
+- [x] Criar teste: exibir código do participante sorteado
+- [x] Criar teste: permitir múltiplos sorteios
 
 ### 16. Executar Testes
-- [ ] Executar `./vendor/bin/pest` ou `php artisan test`
-- [ ] Garantir que todos os testes passam com sucesso
+- [x] Executar `./vendor/bin/pest` ou `php artisan test`
+- [x] Garantir que todos os testes passam com sucesso
 
 ### 17. Documentação
 - [ ] Criar/Atualizar README.md com:
