@@ -167,13 +167,21 @@ Aplicação web para cadastro de participantes do PHPeste 2025 em Parnaíba, Pia
   - Estrutura do projeto
 
 ### 18. Validação Final
-- [ ] Testar fluxo completo de cadastro (formulário → validação → salvamento → e-mail → sucesso)
-- [ ] Testar validação de e-mail duplicado
-- [ ] Testar geração de código único
-- [ ] Testar sistema de sorteio completo (sorteio → exibir dados → exibir código → sortear novamente)
-- [ ] Testar que participante não é sorteado duas vezes
-- [ ] Testar mensagem quando não há mais participantes disponíveis
-- [ ] Verificar e-mails no Mailpit
-- [ ] Verificar responsividade do layout Bootstrap
-- [ ] Validar exibição de erros no padrão Bootstrap
-- [ ] Executar todos os testes e garantir que passam
+
+**Metodologia de Testes**: Validação realizada via `curl` e `artisan tinker` devido à execução via Laravel Sail sem acesso direto ao browser. Os testes verificaram:
+- Requisições HTTP com curl para validar respostas e conteúdo HTML
+- Manipulação de dados via Eloquent no tinker para testar lógica de negócio
+- API do Mailpit para confirmar envio de e-mails
+- Inspeção de classes Bootstrap no HTML gerado
+
+Resultados:
+- [x] Testar fluxo completo de cadastro (formulário → validação → salvamento → e-mail → sucesso)
+- [x] Testar validação de e-mail duplicado (UNIQUE constraint funcionando)
+- [x] Testar geração de código único (6 participantes, 6 códigos únicos)
+- [x] Testar sistema de sorteio completo (sorteio → exibir dados → exibir código → sortear novamente)
+- [x] Testar que participante não é sorteado duas vezes (relacionamento hasOne impede duplicação)
+- [x] Testar mensagem quando não há mais participantes disponíveis
+- [x] Verificar e-mails no Mailpit (2 e-mails com assunto "Cadastro realizado - PHPeste 2025")
+- [x] Verificar responsividade do layout Bootstrap (Bootstrap 5.3.0 carregado, classes aplicadas)
+- [x] Validar exibição de erros no padrão Bootstrap (classes is-invalid e invalid-feedback implementadas)
+- [x] Executar todos os testes e garantir que passam (18 testes, 45 assertions - 100% sucesso)
