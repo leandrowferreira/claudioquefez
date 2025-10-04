@@ -101,7 +101,7 @@ Aplicação web para cadastro de participantes do PHPeste 2025 em Parnaíba, Pia
   - Exibição de erros de validação abaixo de cada campo (padrão Bootstrap)
 
 ### 10. Views - Página de Sucesso
-- [ ] Criar view `resources/views/participants/success.blade.php` com:
+- [x] Criar view `resources/views/participants/success.blade.php` com:
   - Mensagem: "Obrigado por se inscrever, [Nome]! Guarde o código abaixo, ele será necessário para receber seu brinde no evento caso você seja sorteado."
   - Código em destaque (grande, centralizado)
 
