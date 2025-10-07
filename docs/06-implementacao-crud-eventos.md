@@ -63,11 +63,11 @@ Implementar um CRUD completo de eventos com as seguintes características:
   - Ordenar por `start_datetime DESC` (caso haja sobreposição, pegar o mais recente)
 
 ### 4. Models - Atualizar Relacionamentos
-- [ ] No model `Participant`:
+- [x] No model `Participant`:
   - Adicionar `event_id` no fillable
   - Adicionar relacionamento `belongsTo(Event::class)`
   - Manter relacionamento `hasOne(Draw::class)` existente
-- [ ] No model `Draw`:
+- [x] No model `Draw`:
   - Adicionar `event_id` no fillable
   - Adicionar relacionamento `belongsTo(Event::class)`
   - Manter relacionamento `belongsTo(Participant::class)` existente

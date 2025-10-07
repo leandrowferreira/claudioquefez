@@ -15,10 +15,16 @@ class Participant extends Model
         'email',
         'state',
         'codigo',
+        'event_id',
     ];
 
     public function draw(): HasOne
     {
         return $this->hasOne(Draw::class);
+    }
+
+    public function event()
+    {
+        return $this->belongsTo(Event::class);
     }
 }
