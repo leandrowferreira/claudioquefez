@@ -73,8 +73,8 @@ Implementar um CRUD completo de eventos com as seguintes características:
   - Manter relacionamento `belongsTo(Participant::class)` existente
 
 ### 5. Migration de Dados - PHPeste 2025
-- [ ] Criar migration `sail artisan make:migration insert_phpeste_2025_event`
-- [ ] Implementar no método `up()`:
+- [x] Criar migration `sail artisan make:migration insert_phpeste_2025_event`
+- [x] Implementar no método `up()`:
   ```php
   // Forçar ID 1 para o evento PHPeste 2025
   DB::table('events')->insert([
@@ -88,14 +88,8 @@ Implementar um CRUD completo de eventos com as seguintes características:
       'updated_at' => now(),
   ]);
   ```
-- [ ] Implementar no método `down()`:
-  ```php
-  // Não há rollback seguro para esta migration de dados
-  // O evento só pode ser removido se não houver participantes/sorteios vinculados
-  // Em caso de necessidade, remover manualmente via Eloquent
-  ```
-- [ ] Executar migration: `sail artisan migrate`
-- [ ] **Notas importantes**:
+- [x] Executar migration: `sail artisan migrate`
+- [x] **Notas importantes**:
   - Com `default 1` nas colunas `event_id`, os registros existentes de participants e draws já estarão automaticamente vinculados ao evento ID 1
   - Esta é uma migration de dados que não deve ser revertida em produção
   - O rollback das migrations de relacionamento (que removem as colunas `event_id`) já garantem a limpeza estrutural
