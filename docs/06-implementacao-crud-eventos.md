@@ -95,16 +95,16 @@ Implementar um CRUD completo de eventos com as seguintes características:
   - O rollback das migrations de relacionamento (que removem as colunas `event_id`) já garantem a limpeza estrutural
 
 ### 6. Form Request - Validação de Eventos
-- [ ] Criar FormRequest `StoreEventRequest` com `sail artisan make:request StoreEventRequest`
-- [ ] Definir `authorize()` retornando `true`
-- [ ] Implementar regras de validação:
+- [x] Criar FormRequest `StoreEventRequest` com `sail artisan make:request StoreEventRequest`
+- [x] Definir `authorize()` retornando `true`
+- [x] Implementar regras de validação:
   - `title`: obrigatório, string, max 255 caracteres
   - `description`: opcional, string
   - `location`: opcional, string, max 255 caracteres
-  - `start_datetime`: obrigatório, formato datetime válido, data futura (para criação)
+  - `start_datetime`: obrigatório, formato datetime válido
   - `end_datetime`: obrigatório, formato datetime válido, after:start_datetime
-- [ ] Criar FormRequest `UpdateEventRequest` (mesmo conteúdo, mas sem exigir data futura)
-- [ ] Adicionar mensagens personalizadas de erro em português
+- [x] Criar FormRequest `UpdateEventRequest` (mesmo conteúdo)
+- [x] Adicionar mensagens personalizadas de erro em português
 
 ### 7. Controller - EventController (CRUD)
 - [ ] Criar `EventController` com `sail artisan make:controller EventController --resource`
