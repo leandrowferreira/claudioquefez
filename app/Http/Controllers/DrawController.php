@@ -23,6 +23,7 @@ class DrawController extends Controller
 
         if ($password === $correctPassword) {
             session(['draw_authenticated' => true]);
+
             return redirect()->route('draws.index');
         }
 
@@ -51,7 +52,7 @@ class DrawController extends Controller
     {
         $event = Event::getActiveEvent();
 
-        if (!$event) {
+        if (! $event) {
             return redirect()->route('draws.index')
                 ->with('error', 'Não há eventos acontecendo no momento. Sorteios estão fechados.');
         }

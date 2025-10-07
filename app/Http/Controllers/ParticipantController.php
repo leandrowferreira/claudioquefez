@@ -22,7 +22,7 @@ class ParticipantController extends Controller
     {
         $event = Event::getActiveEvent();
 
-        if (!$event) {
+        if (! $event) {
             return redirect()->route('participants.index')
                 ->with('error', 'Não há eventos acontecendo no momento. Cadastros estão fechados.');
         }

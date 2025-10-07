@@ -30,6 +30,7 @@ class StoreParticipantRequest extends FormRequest
                 'email',
                 Rule::unique('participants')->where(function ($query) {
                     $event = Event::getActiveEvent();
+
                     return $query->where('event_id', $event?->id);
                 }),
             ],
