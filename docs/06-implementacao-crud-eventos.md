@@ -200,7 +200,7 @@ Implementar um CRUD completo de eventos com as seguintes características:
 - [x] Atualizar chamada da notificação em `ParticipantController::store`
 
 ### 11. Views - Layout Base (Menu de Navegação)
-- [ ] Atualizar `resources/views/layouts/app.blade.php`:
+- [x] Atualizar `resources/views/layouts/app.blade.php`:
   - Adicionar menu de navegação Bootstrap com:
     - Link "Cadastro" (`/`)
     - Link "Sorteio" (`/sorteio`) - visível apenas se autenticado
@@ -216,7 +216,7 @@ Implementar um CRUD completo de eventos com as seguintes características:
 ### 12. Views - CRUD de Eventos
 
 #### Index (Lista)
-- [ ] Criar view `resources/views/events/index.blade.php`:
+- [x] Criar view `resources/views/events/index.blade.php`:
   - Tabela Bootstrap listando todos os eventos
   - Colunas: Título, Local, Data/Hora Início, Data/Hora Fim, Status (Ativo/Encerrado/Futuro), Ações
   - Botão "Novo Evento" no topo
@@ -224,7 +224,7 @@ Implementar um CRUD completo de eventos com as seguintes características:
   - Badge visual para evento ativo (verde) / encerrado (cinza) / futuro (azul)
 
 #### Create (Formulário de Criação)
-- [ ] Criar view `resources/views/events/create.blade.php`:
+- [x] Criar view `resources/views/events/create.blade.php`:
   - Formulário POST para `/eventos`
   - Campo "Título" (input text, required)
   - Campo "Descrição" (textarea, opcional)
@@ -236,13 +236,13 @@ Implementar um CRUD completo de eventos com as seguintes características:
   - Exibir erros de validação no padrão Bootstrap
 
 #### Edit (Formulário de Edição)
-- [ ] Criar view `resources/views/events/edit.blade.php`:
+- [x] Criar view `resources/views/events/edit.blade.php`:
   - Mesmo formulário do create, mas com método PUT para `/eventos/{id}`
   - Campos preenchidos com dados do evento
   - Usar `@method('PUT')` do Blade
 
 #### Show (Detalhes)
-- [ ] Criar view `resources/views/events/show.blade.php`:
+- [x] Criar view `resources/views/events/show.blade.php`:
   - Exibir todos os dados do evento
   - Estatísticas: total de participantes, total de sorteados
   - Botão "Editar"
@@ -251,23 +251,23 @@ Implementar um CRUD completo de eventos com as seguintes características:
 ### 13. Atualizar Views Existentes (Remover Hardcode)
 
 #### resources/views/participants/index.blade.php
-- [ ] Substituir "PHPeste 2025" por `{{ $event?->title ?? 'Cadastro de Participantes' }}`
-- [ ] Se não houver evento ativo (`!$event`), exibir mensagem de cadastros fechados e ocultar formulário
+- [x] Substituir "PHPeste 2025" por `{{ $event?->title ?? 'Cadastro de Participantes' }}`
+- [x] Se não houver evento ativo (`!$event`), exibir mensagem de cadastros fechados e ocultar formulário
 
 #### resources/views/participants/success.blade.php
-- [ ] Substituir "PHPeste 2025" por `{{ $event->title }}`
-- [ ] Usar `{{ $event->title }}` na mensagem de agradecimento
+- [x] Substituir "PHPeste 2025" por `{{ $event->title }}`
+- [x] Usar `{{ $event->title }}` na mensagem de agradecimento
 
 #### resources/views/draws/index.blade.php
-- [ ] Substituir "PHPeste 2025" por `{{ $event?->title ?? 'Sistema de Sorteio' }}`
-- [ ] Se não houver evento ativo (`!$event`), exibir mensagem de sorteios fechados e ocultar botão de sortear
+- [x] Substituir "PHPeste 2025" por `{{ $event?->title ?? 'Sistema de Sorteio' }}`
+- [x] Se não houver evento ativo (`!$event`), exibir mensagem de sorteios fechados e ocultar botão de sortear
 
 #### resources/views/layouts/app.blade.php
-- [ ] Substituir título fixo "PHPeste 2025" por dinâmico:
+- [x] Substituir título fixo "PHPeste 2025" por dinâmico:
   ```blade
   <title>{{ $event->title ?? 'Sistema de Sorteios' }}</title>
   ```
-- [ ] No cabeçalho, usar evento ativo se disponível
+- [x] No cabeçalho, usar evento ativo se disponível
 
 ### 14. Rotas - CRUD de Eventos
 - [ ] Adicionar em `routes/web.php`:

@@ -15,11 +15,11 @@
                 <h2 class="card-title mb-4">Cadastro Realizado com Sucesso!</h2>
 
                 <p class="lead mb-4">
-                    Obrigado por participar do sorteio da comunidade PHP PE, <strong>{{ $participant->name }}</strong>!
+                    Obrigado por participar do <strong>{{ $event->title }}</strong>, <strong>{{ $participant->name }}</strong>!
                 </p>
 
                 <div class="alert alert-info" role="alert">
-                    <strong>Importante:</strong> Guarde o código abaixo com cuidado. Ele será necessário para receber seu brinde caso você seja sorteado durante o PHPeste 2025.
+                    <strong>Importante:</strong> Guarde o código abaixo com cuidado. Ele será necessário para receber seu brinde caso você seja sorteado.
                 </div>
 
                 <div class="my-5">

@@ -3,13 +3,13 @@
 @section('content')
 <div class="row justify-content-center">
     <div class="col-md-10">
-        <h2 class="mb-4">Sistema de Sorteio - PHPeste 2025</h2>
+        <h2 class="mb-4">{{ $event ? $event->title : 'Sistema de Sorteio' }}</h2>
 
-        @if(session('error'))
-            <div class="alert alert-warning" role="alert">
-                {{ session('error') }}
+        @if(!$event)
+            <div class="alert alert-warning">
+                Não há eventos acontecendo no momento. Sorteios estão fechados.
             </div>
-        @endif
+        @else
 
         @if(session('drawn'))
             <div class="card shadow-sm mb-4 border-success">
@@ -93,6 +93,7 @@
                     </div>
                 </div>
             </div>
+        @endif
         @endif
     </div>
 </div>

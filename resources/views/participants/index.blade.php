@@ -5,8 +5,13 @@
     <div class="col-md-6">
         <div class="card shadow-sm">
             <div class="card-body">
-                <h2 class="card-title mb-4">Cadastro de Participantes</h2>
+                <h2 class="card-title mb-4">{{ $event ? $event->title : 'Cadastro de Participantes' }}</h2>
 
+                @if(!$event)
+                    <div class="alert alert-warning">
+                        Não há eventos acontecendo no momento. Cadastros estão fechados.
+                    </div>
+                @else
                 <form action="{{ route('participants.store') }}" method="POST">
                     @csrf
 
@@ -92,6 +97,7 @@
                         <button type="submit" class="btn btn-primary btn-lg">Enviar</button>
                     </div>
                 </form>
+                @endif
             </div>
         </div>
     </div>
