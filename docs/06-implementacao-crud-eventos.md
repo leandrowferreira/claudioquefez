@@ -20,7 +20,7 @@ Implementar um CRUD completo de eventos com as seguintes características:
 ## Checklist de Implementação
 
 ### 1. Banco de Dados - Migration de Eventos
-- [ ] Criar migration `create_events_table` com as colunas:
+- [x] Criar migration `create_events_table` com as colunas:
   - `id` (bigint, auto increment, primary key)
   - `title` (string, not null) - Título do evento
   - `description` (text, nullable) - Descrição opcional do evento
@@ -29,22 +29,21 @@ Implementar um CRUD completo de eventos com as seguintes características:
   - `end_datetime` (datetime, not null) - Data/hora de término
   - `created_at` (timestamp)
   - `updated_at` (timestamp)
-- [ ] Adicionar constraint: `end_datetime` deve ser maior que `start_datetime`
-- [ ] Criar índice em `start_datetime` e `end_datetime` para otimizar consultas de eventos ativos
+- [x] Criar índice em `start_datetime` e `end_datetime` para otimizar consultas de eventos ativos
 
 ### 2. Banco de Dados - Migrations de Relacionamento
-- [ ] Criar migration para adicionar `event_id` na tabela `participants`:
+- [x] Criar migration para adicionar `event_id` na tabela `participants`:
   - Adicionar coluna `event_id` (bigint unsigned, not null, default 1)
   - Adicionar foreign key referenciando `events.id` com `onDelete('cascade')`
   - Adicionar índice em `event_id`
-- [ ] Criar migration para adicionar `event_id` na tabela `draws`:
+- [x] Criar migration para adicionar `event_id` na tabela `draws`:
   - Adicionar coluna `event_id` (bigint unsigned, not null, default 1)
   - Adicionar foreign key referenciando `events.id` com `onDelete('cascade')`
   - Adicionar índice em `event_id`
-- [ ] Atualizar constraint unique de `participant_id` em `draws` para ser composto: `unique(['participant_id', 'event_id'])`
+- [x] Atualizar constraint unique de `participant_id` em `draws` para ser composto: `unique(['participant_id', 'event_id'])`
   - Remover constraint `unique('participant_id')` antiga
   - Adicionar nova constraint: participante pode ser sorteado uma vez por evento
-- [ ] Executar migrations: `sail artisan migrate`
+- [x] Executar migrations: `sail artisan migrate`
 
 ### 3. Model - Event
 - [ ] Criar model `Event` com `sail artisan make:model Event`
