@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Event;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
@@ -24,7 +25,14 @@ class StoreParticipantRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'email', 'unique:participants,email'],
+            'email' => [
+                'required',
+                'email',
+                Rule::unique('participants')->where(function ($query) {
+                    $event = Event::getActiveEvent();
+                    return $query->where('event_id', $event?->id);
+                }),
+            ],
             'state' => ['required', Rule::in($this->getBrazilianStates())],
         ];
     }

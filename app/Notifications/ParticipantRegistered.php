@@ -2,6 +2,8 @@
 
 namespace App\Notifications;
 
+use App\Models\Event;
+use App\Models\Participant;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
@@ -15,7 +17,8 @@ class ParticipantRegistered extends Notification
      * Create a new notification instance.
      */
     public function __construct(
-        public string $codigo
+        public Participant $participant,
+        public Event $event
     ) {
     }
 
@@ -35,12 +38,12 @@ class ParticipantRegistered extends Notification
     public function toMail(object $notifiable): MailMessage
     {
         return (new MailMessage)
-            ->subject('Cadastro realizado - Sorteio PHP PE no PHPeste 2025')
+            ->subject('Cadastro realizado - ' . $this->event->title)
             ->greeting('Olá, ' . $notifiable->name . '!')
-            ->line('Seu cadastro para o sorteio promovido pela comunidade PHP PE durante o PHPeste 2025 foi realizado com sucesso!')
+            ->line('Seu cadastro para o sorteio durante o ' . $this->event->title . ' foi realizado com sucesso!')
             ->line('Guarde o código abaixo com cuidado. Ele será necessário para receber seu brinde caso você seja sorteado.')
-            ->line('**Seu código: ' . $this->codigo . '**')
-            ->line('Obrigado por participar do sorteio da comunidade PHP PE!');
+            ->line('**Seu código: ' . $this->participant->codigo . '**')
+            ->line('Obrigado por participar!');
     }
 
     /**

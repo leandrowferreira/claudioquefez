@@ -174,7 +174,7 @@ Implementar um CRUD completo de eventos com as seguintes características:
   - Adicionar `event_id` ao criar sorteio
 
 ### 9. Atualizar Form Request - StoreParticipantRequest
-- [ ] Modificar validação de `email` para ser unique apenas dentro do evento:
+- [x] Modificar validação de `email` para ser unique apenas dentro do evento:
   ```php
   'email' => [
       'required',
@@ -187,17 +187,17 @@ Implementar um CRUD completo de eventos com as seguintes características:
   ```
 
 ### 10. Atualizar Notificação - ParticipantRegistered
-- [ ] Modificar construtor para receber `Event` como parâmetro:
+- [x] Modificar construtor para receber `Event` como parâmetro:
   ```php
   public function __construct(
       public Participant $participant,
       public Event $event
   ) {}
   ```
-- [ ] Atualizar método `toMail` para usar dados dinâmicos do evento:
+- [x] Atualizar método `toMail` para usar dados dinâmicos do evento:
   - Assunto: `"Cadastro realizado - {$this->event->title}"`
   - Texto: referenciar `$this->event->title` em vez de "PHPeste 2025"
-- [ ] Atualizar chamada da notificação em `ParticipantController::store`
+- [x] Atualizar chamada da notificação em `ParticipantController::store`
 
 ### 11. Views - Layout Base (Menu de Navegação)
 - [ ] Atualizar `resources/views/layouts/app.blade.php`:
