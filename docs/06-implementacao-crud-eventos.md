@@ -135,11 +135,11 @@ Implementar um CRUD completo de eventos com as seguintes características:
 ### 8. Atualizar Controllers Existentes
 
 #### ParticipantController
-- [ ] Atualizar método `index`:
+- [x] Atualizar método `index`:
   - Verificar se existe evento ativo usando `Event::getActiveEvent()`
   - Se não houver evento ativo, exibir mensagem: "Não há eventos acontecendo no momento. Cadastros estão fechados."
   - Passar variável `$event` para a view
-- [ ] Atualizar método `store`:
+- [x] Atualizar método `store`:
   - Verificar se existe evento ativo
   - Se não houver, redirecionar com erro
   - Adicionar `event_id` ao criar participante:
@@ -155,12 +155,12 @@ Implementar um CRUD completo de eventos com as seguintes características:
   - Passar `$event` para a notificação
 
 #### DrawController
-- [ ] Atualizar método `index`:
+- [x] Atualizar método `index`:
   - Verificar se existe evento ativo
   - Se não houver, exibir mensagem: "Não há eventos acontecendo no momento. Sorteios estão fechados."
   - Buscar sorteios apenas do evento ativo: `Draw::where('event_id', $event->id)->with('participant')->get()`
   - Passar variável `$event` para a view
-- [ ] Atualizar método `draw`:
+- [x] Atualizar método `draw`:
   - Verificar se existe evento ativo
   - Se não houver, retornar erro
   - Buscar participantes do evento ativo que não foram sorteados:
@@ -172,8 +172,6 @@ Implementar um CRUD completo de eventos com as seguintes características:
         ->get();
     ```
   - Adicionar `event_id` ao criar sorteio
-- [ ] Atualizar método `showCode`:
-  - Verificar que o sorteio pertence ao evento ativo
 
 ### 9. Atualizar Form Request - StoreParticipantRequest
 - [ ] Modificar validação de `email` para ser unique apenas dentro do evento:
