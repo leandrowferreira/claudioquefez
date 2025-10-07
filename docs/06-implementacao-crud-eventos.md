@@ -46,18 +46,18 @@ Implementar um CRUD completo de eventos com as seguintes características:
 - [x] Executar migrations: `sail artisan migrate`
 
 ### 3. Model - Event
-- [ ] Criar model `Event` com `sail artisan make:model Event`
-- [ ] Definir fillable: `['title', 'description', 'location', 'start_datetime', 'end_datetime']`
-- [ ] Adicionar casts para datas:
+- [x] Criar model `Event` com `sail artisan make:model Event`
+- [x] Definir fillable: `['title', 'description', 'location', 'start_datetime', 'end_datetime']`
+- [x] Adicionar casts para datas:
   ```php
   protected $casts = [
       'start_datetime' => 'datetime',
       'end_datetime' => 'datetime',
   ];
   ```
-- [ ] Adicionar relacionamento `hasMany(Participant::class)` no model `Event`
-- [ ] Adicionar relacionamento `hasMany(Draw::class)` no model `Event`
-- [ ] Criar método estático `getActiveEvent()` que:
+- [x] Adicionar relacionamento `hasMany(Participant::class)` no model `Event`
+- [x] Adicionar relacionamento `hasMany(Draw::class)` no model `Event`
+- [x] Criar método estático `getActiveEvent()` que:
   - Busca evento onde `now()` está entre `start_datetime` e `end_datetime`
   - Retorna o primeiro evento encontrado ou `null`
   - Ordenar por `start_datetime DESC` (caso haja sobreposição, pegar o mais recente)
