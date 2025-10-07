@@ -270,14 +270,14 @@ Implementar um CRUD completo de eventos com as seguintes características:
 - [x] No cabeçalho, usar evento ativo se disponível
 
 ### 14. Rotas - CRUD de Eventos
-- [ ] Adicionar em `routes/web.php`:
+- [x] Adicionar em `routes/web.php`:
   ```php
   Route::middleware('check.draw.password')->group(function () {
       Route::resource('eventos', EventController::class);
   });
   ```
-- [ ] Todas as rotas de eventos protegidas por autenticação
-- [ ] Usar nomenclatura resource: index, create, store, show, edit, update, destroy
+- [x] Todas as rotas de eventos protegidas por autenticação
+- [x] Usar nomenclatura resource: index, create, store, show, edit, update, destroy
 
 ### 15. Testes - CRUD de Eventos
 

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DrawController;
+use App\Http\Controllers\EventController;
 use App\Http\Controllers\ParticipantController;
 use Illuminate\Support\Facades\Route;
 
@@ -14,9 +15,13 @@ Route::get('/sucesso/{codigo}', [ParticipantController::class, 'success'])->name
 Route::get('/sorteio/senha', [DrawController::class, 'showPasswordForm'])->name('draw.password');
 Route::post('/sorteio/senha', [DrawController::class, 'verifyPassword'])->name('draw.verify');
 
-// Rotas de Sorteio (protegidas por middleware)
+// Rotas protegidas por autenticação
 Route::middleware('check.draw.password')->group(function () {
+    // Rotas de Sorteio
     Route::get('/sorteio', [DrawController::class, 'index'])->name('draws.index');
     Route::post('/sorteio/sortear', [DrawController::class, 'draw'])->name('draws.draw');
     Route::post('/sorteio/{draw}/exibir-codigo', [DrawController::class, 'showCode'])->name('draws.showCode');
+
+    // Rotas de Eventos (CRUD)
+    Route::resource('eventos', EventController::class);
 });
