@@ -107,28 +107,28 @@ Implementar um CRUD completo de eventos com as seguintes características:
 - [x] Adicionar mensagens personalizadas de erro em português
 
 ### 7. Controller - EventController (CRUD)
-- [ ] Criar `EventController` com `sail artisan make:controller EventController --resource`
-- [ ] Implementar método `index`:
+- [x] Criar `EventController` com `sail artisan make:controller EventController --resource`
+- [x] Implementar método `index`:
   - Buscar todos os eventos ordenados por `start_datetime DESC`
   - Retornar view `events.index` com lista de eventos
-- [ ] Implementar método `create`:
+- [x] Implementar método `create`:
   - Retornar view `events.create` com formulário vazio
-- [ ] Implementar método `store`:
+- [x] Implementar método `store`:
   - Validar com `StoreEventRequest`
   - Criar evento no banco
   - Redirecionar para `events.index` com mensagem de sucesso
-- [ ] Implementar método `edit($id)`:
+- [x] Implementar método `edit($id)`:
   - Buscar evento por ID
   - Retornar view `events.edit` com dados do evento
-- [ ] Implementar método `update($id)`:
+- [x] Implementar método `update($id)`:
   - Validar com `UpdateEventRequest`
   - Atualizar evento no banco
   - Redirecionar para `events.index` com mensagem de sucesso
-- [ ] Implementar método `destroy($id)`:
+- [x] Implementar método `destroy($id)`:
   - Buscar evento por ID
   - Deletar evento (cascade deletará participantes e sorteios)
   - Redirecionar para `events.index` com mensagem de sucesso
-- [ ] Implementar método `show($id)`:
+- [x] Implementar método `show($id)`:
   - Buscar evento com contagem de participantes e sorteios
   - Retornar view `events.show` com detalhes do evento
 
