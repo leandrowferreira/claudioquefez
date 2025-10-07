@@ -67,6 +67,40 @@
                 </div>
             </div>
         </div>
+
+        @if($draws->isNotEmpty())
+            <div class="card shadow-sm mt-4">
+                <div class="card-header bg-light">
+                    <h5 class="mb-0">Participantes Sorteados</h5>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Data/Hora</th>
+                                    <th>Nome</th>
+                                    <th>E-mail</th>
+                                    <th>Estado</th>
+                                    <th>Código</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($draws as $draw)
+                                    <tr>
+                                        <td>{{ $draw->created_at->format('d/m/Y H:i') }}</td>
+                                        <td>{{ $draw->participant->name }}</td>
+                                        <td>{{ $draw->participant->email }}</td>
+                                        <td>{{ $draw->participant->state }}</td>
+                                        <td><code>{{ $draw->participant->codigo }}</code></td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        @endif
     </div>
 </div>
 @endsection

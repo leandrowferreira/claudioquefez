@@ -23,5 +23,7 @@ Route::middleware('check.draw.password')->group(function () {
     Route::post('/sorteio/{draw}/exibir-codigo', [DrawController::class, 'showCode'])->name('draws.showCode');
 
     // Rotas de Eventos (CRUD)
-    Route::resource('eventos', EventController::class);
+    Route::resource('eventos', EventController::class)->parameters([
+        'eventos' => 'event',
+    ]);
 });

@@ -34,8 +34,9 @@ class EventController extends Controller
     {
         $participantsCount = $event->participants()->count();
         $drawsCount = $event->draws()->count();
+        $draws = $event->draws()->with('participant')->latest()->get();
 
-        return view('events.show', compact('event', 'participantsCount', 'drawsCount'));
+        return view('events.show', compact('event', 'participantsCount', 'drawsCount', 'draws'));
     }
 
     public function edit(Event $event): View

@@ -567,6 +567,32 @@ Ao final da implementação:
 
 ---
 
+## Melhorias Implementadas Durante a Validação
+
+### Route Model Binding
+- Configurado mapeamento de parâmetros nas rotas: `eventos` → `event`
+- Resolve problema de Missing required parameter nas rotas resource
+
+### View de Detalhes do Evento (show)
+- Adicionada tabela com lista de sorteados do evento
+- Exibe: data/hora, nome, email, estado e código
+- Facilita visualização rápida dos ganhadores
+
+### View de Edição do Evento (edit)
+- **Evento futuro**: permite editar todos os campos
+- **Evento em andamento ou passado**:
+  - Bloqueia edição de título, descrição, local e data de início
+  - Permite apenas alterar data/hora de término
+  - Exibe alerta informativo ao usuário
+  - Envia campos bloqueados via hidden inputs
+
+### Código Formatado
+- Executado Laravel Pint
+- Corrigidos 6 problemas de estilo
+- Adicionado `00_extras/` ao .gitignore
+
+---
+
 ## Melhorias Futuras Possíveis
 
 - [ ] Dashboard administrativo com estatísticas
