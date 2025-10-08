@@ -1,14 +1,25 @@
 <?php
 
+use App\Models\Event;
 use App\Models\Participant;
 use App\Notifications\ParticipantRegistered;
 use Illuminate\Support\Facades\Notification;
+
+beforeEach(function () {
+    Event::create([
+        'title' => 'PHPeste 2025',
+        'description' => 'Conferência de PHP no Nordeste',
+        'location' => 'Parnaíba, Piauí',
+        'start_datetime' => now()->subHour(),
+        'end_datetime' => now()->addHours(3),
+    ]);
+});
 
 test('exibir formulário de cadastro', function () {
     $response = $this->get('/');
 
     $response->assertStatus(200);
-    $response->assertSee('Cadastro de Participantes');
+    $response->assertSee('PHPeste 2025');
 });
 
 test('cadastro com dados válidos salva no banco e redireciona para sucesso', function () {
@@ -45,14 +56,17 @@ test('gerar código único de 5 letras maiúsculas', function () {
     expect($participant->codigo)->toMatch('/^[A-Z]{5}$/');
 });
 
-test('não permitir e-mail duplicado', function () {
+test('não permitir e-mail duplicado no mesmo evento', function () {
     Notification::fake();
+
+    $event = Event::getActiveEvent();
 
     Participant::create([
         'name' => 'Pedro Costa',
         'email' => 'pedro@example.com',
         'state' => 'BA',
         'codigo' => 'ABCDE',
+        'event_id' => $event->id,
     ]);
 
     $response = $this->post('/', [

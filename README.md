@@ -279,8 +279,8 @@ Ou usando o Pest diretamente:
 
 - ✅ 9 testes de cadastro de participantes
 - ✅ 11 testes de sistema de sorteio (incluindo autenticação)
-- ✅ 22 testes no total com 56 assertions
-- 🔄 Testes adicionais serão implementados para o sistema de eventos
+- ✅ 23 testes de CRUD e integração de eventos
+- ✅ **45 testes no total com 116 assertions**
 
 ## 🎨 Características Técnicas
 

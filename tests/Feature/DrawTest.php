@@ -1,7 +1,18 @@
 <?php
 
 use App\Models\Draw;
+use App\Models\Event;
 use App\Models\Participant;
+
+beforeEach(function () {
+    Event::create([
+        'title' => 'PHPeste 2025',
+        'description' => 'Conferência de PHP no Nordeste',
+        'location' => 'Parnaíba, Piauí',
+        'start_datetime' => now()->subHour(),
+        'end_datetime' => now()->addHours(3),
+    ]);
+});
 
 test('redirecionar para tela de senha quando não autenticado', function () {
     $response = $this->get('/sorteio');
@@ -51,31 +62,38 @@ test('exibir página de sorteio quando autenticado', function () {
 test('sortear participante cadastrado e salvar em draws', function () {
     $this->withSession(['draw_authenticated' => true]);
 
+    $event = Event::getActiveEvent();
+
     $participant = Participant::create([
         'name' => 'Carlos Alberto',
         'email' => 'carlos@example.com',
         'state' => 'RS',
         'codigo' => 'ABCDE',
+        'event_id' => $event->id,
     ]);
 
     $response = $this->post('/sorteio/sortear');
 
     $this->assertDatabaseHas('draws', [
         'participant_id' => $participant->id,
+        'event_id' => $event->id,
     ]);
 
     $response->assertRedirect(route('draws.index'));
     $response->assertSessionHas('drawn');
 });
 
-test('participante sorteado não pode ser sorteado novamente', function () {
+test('participante sorteado não pode ser sorteado novamente no mesmo evento', function () {
     $this->withSession(['draw_authenticated' => true]);
+
+    $event = Event::getActiveEvent();
 
     $participant = Participant::create([
         'name' => 'Fernanda Lima',
         'email' => 'fernanda@example.com',
         'state' => 'PR',
         'codigo' => 'FGHIJ',
+        'event_id' => $event->id,
     ]);
 
     // Primeiro sorteio
@@ -83,6 +101,7 @@ test('participante sorteado não pode ser sorteado novamente', function () {
 
     $this->assertDatabaseHas('draws', [
         'participant_id' => $participant->id,
+        'event_id' => $event->id,
     ]);
 
     // Tentar sortear novamente (não deve haver mais participantes)
@@ -95,11 +114,14 @@ test('participante sorteado não pode ser sorteado novamente', function () {
 test('exibir lista de participantes já sorteados', function () {
     $this->withSession(['draw_authenticated' => true]);
 
+    $event = Event::getActiveEvent();
+
     $participant1 = Participant::create([
         'name' => 'Roberto Silva',
         'email' => 'roberto@example.com',
         'state' => 'SC',
         'codigo' => 'KLMNO',
+        'event_id' => $event->id,
     ]);
 
     $participant2 = Participant::create([
@@ -107,10 +129,17 @@ test('exibir lista de participantes já sorteados', function () {
         'email' => 'paula@example.com',
         'state' => 'GO',
         'codigo' => 'PQRST',
+        'event_id' => $event->id,
     ]);
 
-    Draw::create(['participant_id' => $participant1->id]);
-    Draw::create(['participant_id' => $participant2->id]);
+    Draw::create([
+        'participant_id' => $participant1->id,
+        'event_id' => $event->id,
+    ]);
+    Draw::create([
+        'participant_id' => $participant2->id,
+        'event_id' => $event->id,
+    ]);
 
     $response = $this->get('/sorteio');
 
@@ -123,14 +152,20 @@ test('exibir lista de participantes já sorteados', function () {
 test('exibir mensagem quando não há mais participantes disponíveis', function () {
     $this->withSession(['draw_authenticated' => true]);
 
+    $event = Event::getActiveEvent();
+
     $participant = Participant::create([
         'name' => 'Última Pessoa',
         'email' => 'ultima@example.com',
         'state' => 'AM',
         'codigo' => 'UVWXY',
+        'event_id' => $event->id,
     ]);
 
-    Draw::create(['participant_id' => $participant->id]);
+    Draw::create([
+        'participant_id' => $participant->id,
+        'event_id' => $event->id,
+    ]);
 
     $response = $this->post('/sorteio/sortear');
 
@@ -140,14 +175,20 @@ test('exibir mensagem quando não há mais participantes disponíveis', function
 test('exibir código do participante sorteado', function () {
     $this->withSession(['draw_authenticated' => true]);
 
+    $event = Event::getActiveEvent();
+
     $participant = Participant::create([
         'name' => 'Marcelo Santos',
         'email' => 'marcelo@example.com',
         'state' => 'MT',
         'codigo' => 'ZABCD',
+        'event_id' => $event->id,
     ]);
 
-    $draw = Draw::create(['participant_id' => $participant->id]);
+    $draw = Draw::create([
+        'participant_id' => $participant->id,
+        'event_id' => $event->id,
+    ]);
 
     $response = $this->post(route('draws.showCode', $draw));
 
@@ -158,11 +199,14 @@ test('exibir código do participante sorteado', function () {
 test('permitir múltiplos sorteios', function () {
     $this->withSession(['draw_authenticated' => true]);
 
+    $event = Event::getActiveEvent();
+
     $participant1 = Participant::create([
         'name' => 'Primeiro',
         'email' => 'primeiro@example.com',
         'state' => 'PA',
         'codigo' => 'AAAAA',
+        'event_id' => $event->id,
     ]);
 
     $participant2 = Participant::create([
@@ -170,6 +214,7 @@ test('permitir múltiplos sorteios', function () {
         'email' => 'segundo@example.com',
         'state' => 'RO',
         'codigo' => 'BBBBB',
+        'event_id' => $event->id,
     ]);
 
     $participant3 = Participant::create([
@@ -177,6 +222,7 @@ test('permitir múltiplos sorteios', function () {
         'email' => 'terceiro@example.com',
         'state' => 'AP',
         'codigo' => 'CCCCC',
+        'event_id' => $event->id,
     ]);
 
     // Primeiro sorteio
