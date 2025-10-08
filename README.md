@@ -34,26 +34,54 @@ Aplicação web que permite:
 
 ## 🔧 Instalação
 
-### 1. Clone o repositório
+### Instalação Automática (Recomendado)
+
+Clone o repositório e execute o script de instalação:
+
+```bash
+git clone https://github.com/leandrowferreira/claudioquefez.git
+cd claudioquefez
+./install.sh
+```
+
+O script automaticamente:
+- ✅ Instala dependências do Composer
+- ✅ Inicia containers Docker com Sail
+- ✅ Cria arquivo `.env`
+- ✅ Gera chave da aplicação
+- ✅ Cria banco de dados SQLite
+- ✅ Executa migrations
+
+### Instalação Manual
+
+<details>
+<summary>Clique para ver os passos manuais</summary>
+
+#### 1. Clone o repositório
 
 ```bash
 git clone https://github.com/leandrowferreira/claudioquefez.git
 cd claudioquefez
 ```
 
-### 2. Inicie os containers com Sail
+#### 2. Instale as dependências do Composer (primeira vez)
+
+```bash
+docker run --rm \
+    -u "$(id -u):$(id -g)" \
+    -v "$(pwd):/var/www/html" \
+    -w /var/www/html \
+    laravelsail/php84-composer:latest \
+    composer install --ignore-platform-reqs
+```
+
+#### 3. Inicie os containers com Sail
 
 ```bash
 ./vendor/bin/sail up -d
 ```
 
-### 3. Instale as dependências
-
-```bash
-./vendor/bin/sail composer install
-```
-
-### 4. Copie o arquivo de ambiente
+#### 4. Copie o arquivo de ambiente
 
 ```bash
 cp .env.example .env
@@ -63,19 +91,19 @@ cp .env.example .env
 
 A senha padrão para acesso ao sistema de sorteio está definida em `DRAW_PASSWORD="123mudar :)"`.
 
-### 5. Gere a chave da aplicação
+#### 5. Gere a chave da aplicação
 
 ```bash
 ./vendor/bin/sail artisan key:generate
 ```
 
-### 6. Crie o banco de dados SQLite
+#### 6. Crie o banco de dados SQLite
 
 ```bash
 touch database/database.sqlite
 ```
 
-### 7. Execute as migrations
+#### 7. Execute as migrations
 
 ```bash
 ./vendor/bin/sail artisan migrate
@@ -86,6 +114,8 @@ Este passo criará:
 - Tabela de participantes (vinculada a eventos)
 - Tabela de sorteios (vinculada a eventos e participantes)
 - Evento inicial PHPeste 2025 (ID 1)
+
+</details>
 
 ## 🎯 Uso da Aplicação
 
