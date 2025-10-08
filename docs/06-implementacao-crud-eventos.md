@@ -329,16 +329,28 @@ Implementar um CRUD completo de eventos com as seguintes características:
 **Resultado Final**: ✅ **45 testes passando com 116 assertions**
 
 ### 17. Validação de Remoção de Hardcode
-- [ ] Buscar no código por "PHPeste" ou "phpeste" (case-insensitive):
+- [x] Buscar no código por "PHPeste" ou "phpeste" (case-insensitive):
   ```bash
   grep -ri "phpeste" app/ resources/ --exclude-dir=vendor
   ```
-- [ ] Garantir que nenhuma referência hardcoded existe (exceto em seeders/docs)
-- [ ] Buscar por data "2025-10-03" no código:
+- [x] Garantir que nenhuma referência hardcoded existe (exceto em seeders/docs)
+- [x] Buscar por data "2025-10-03" no código:
   ```bash
   grep -r "2025-10-03" app/ resources/ --exclude-dir=vendor
   ```
-- [ ] Garantir que datas estão apenas em seeders
+- [x] Garantir que datas estão apenas em seeders
+- [x] Verificar ausência de event_id hardcoded nos controllers e models
+- [x] Verificar ausência de strings de descrição/localização hardcoded
+
+**Resultado da Validação**:
+- ✅ Zero referências a "PHPeste" em `app/` e `resources/`
+- ✅ Zero referências a data "2025-10-03" em código da aplicação
+- ✅ Zero referências a "event_id = 1" nos controllers/models
+- ✅ Referências a "PHPeste 2025" encontradas apenas em:
+  - `database/migrations/2025_10_07_085231_insert_phpeste_2025_event.php` (esperado - dados iniciais)
+  - `tests/Feature/DrawTest.php` (esperado - setup de testes)
+  - `tests/Feature/ParticipantTest.php` (esperado - setup de testes)
+- ✅ Sistema 100% dinâmico e genérico para múltiplos eventos
 
 ### 18. Melhorias de UX/UI
 - [ ] Adicionar feedback visual para operações CRUD (mensagens flash Bootstrap):
