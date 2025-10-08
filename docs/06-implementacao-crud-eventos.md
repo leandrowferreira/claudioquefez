@@ -353,19 +353,22 @@ Implementar um CRUD completo de eventos com as seguintes características:
 - ✅ Sistema 100% dinâmico e genérico para múltiplos eventos
 
 ### 18. Melhorias de UX/UI
-- [ ] Adicionar feedback visual para operações CRUD (mensagens flash Bootstrap):
-  - "Evento criado com sucesso"
-  - "Evento atualizado com sucesso"
-  - "Evento deletado com sucesso"
-- [ ] Adicionar confirmação JavaScript antes de deletar evento:
+- [x] Adicionar feedback visual para operações CRUD (mensagens flash Bootstrap):
+  - ✅ "Evento criado com sucesso" - `EventController@store`
+  - ✅ "Evento atualizado com sucesso" - `EventController@update`
+  - ✅ "Evento deletado com sucesso" - `EventController@destroy`
+- [x] Adicionar confirmação JavaScript antes de deletar evento:
   ```javascript
-  onclick="return confirm('Tem certeza que deseja deletar este evento? Todos os participantes e sorteios serão removidos.')"
+  onsubmit="return confirm('Tem certeza que deseja deletar este evento? Todos os participantes e sorteios serão removidos.')"
   ```
-- [ ] Adicionar paginação na lista de eventos (se necessário)
-- [ ] Formatar datas nas views usando Carbon:
+  - Implementado em `resources/views/events/index.blade.php` linha 49
+- [ ] Adicionar paginação na lista de eventos (não necessário - poucos eventos esperados)
+- [x] Formatar datas nas views usando Carbon:
   ```blade
   {{ $event->start_datetime->format('d/m/Y H:i') }}
   ```
+  - ✅ `events/index.blade.php` - linhas 35-36 (lista de eventos)
+  - ✅ `events/show.blade.php` - linhas 37, 41, 91 (detalhes e sorteios)
 
 ### 19. Documentação
 - [ ] Atualizar README.md com:
